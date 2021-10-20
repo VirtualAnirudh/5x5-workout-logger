@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# TODO: Log to a csv file
+log_workout() {
+    echo $@
+}
+
 workout_a() { 
     echo "Weight Used for Squat: "
     read squat
@@ -10,7 +15,7 @@ workout_a() {
     echo "Weight Used for Barbell Rows: "
     read rows
     
-    python3 log_workout.py "$(date +"%d-%m-%Y")" A $squat $bench_press $rows 
+    log_workout "$(date +"%d-%m-%Y")" A $squat $bench_press $rows 
     echo "Logged Workout A on $(date)"
 }
 
@@ -24,7 +29,7 @@ workout_b() {
     echo "Weight Used for Barbell Deadlift: "
     read deadlift 
 
-    python3 log_workout.py "$(date +"%d-%m-%Y")" B $squat $overhead_press $deadlift
+    log_workout "$(date +"%d-%m-%Y")" B $squat $overhead_press $deadlift
     echo "Logged Workout B on $(date)"
 }
 
