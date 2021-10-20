@@ -1,8 +1,10 @@
 # 5x5 Stronglifts Workout 
 
-./workout A to log Workout A
+'''
+./workout A # Log Workout A
 
-./workout B to log Workout B
+./workout B # Log Workout B
+'''
 
 ## Workout A 
 Squats 
