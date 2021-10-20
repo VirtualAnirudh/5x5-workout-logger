@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+workout_a() { 
+    echo "Weight Used for Squat: "
+    read squat
+
+    echo "Weight Used for Bench Press: "
+    read bench_press
+
+    echo "Weight Used for Barbell Rows: "
+    read rows
+    
+    python3 log_workout.py "$(date +"%d-%m-%Y")" A $squat $bench_press $rows 
+    echo "Logged Workout A on $(date)"
+}
+
+workout_b() { 
+    echo "Weight Used for Squat: "
+    read squat
+
+    echo "Weight Used for Overhead Press: "
+    read overhead_press
+
+    echo "Weight Used for Barbell Deadlift: "
+    read deadlift 
+
+    python3 log_workout.py "$(date +"%d-%m-%Y")" B $squat $overhead_press $deadlift
+    echo "Logged Workout B on $(date)"
+}
+
+case "$1" in 
+    a|A) workout_a ;;
+    b|B) workout_b ;;
+    *) printf "Options\\n\\n a:\\tLog Workout A\\n b:\\tLog Workout B\\n" ;;
+esac
