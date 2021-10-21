@@ -38,6 +38,7 @@ create_file() {
 
 [ -e workout.csv ] || create_file
 
+# Actual Script
 case "$1" in 
     a|A) workout_a ;;
     b|B) workout_b ;;
