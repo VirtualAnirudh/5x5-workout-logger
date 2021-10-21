@@ -1,9 +1,6 @@
 #!/usr/bin/env zsh
 
-# TODO: Log to a csv file
-log_workout() {
-    echo $@
-}
+date=$(date +"%b %d %Y")
 
 workout_a() { 
     echo "Weight Used for Squat: "
@@ -14,8 +11,8 @@ workout_a() {
 
     echo "Weight Used for Barbell Rows: "
     read rows
-    
-    log_workout "$(date +"%d-%m-%Y")" A $squat $bench_press $rows 
+
+    echo "$date, A, $squat, $bench_press, -, $rows, -" >> workout.csv
     echo "Logged Workout A on $(date)"
 }
 
@@ -29,9 +26,17 @@ workout_b() {
     echo "Weight Used for Barbell Deadlift: "
     read deadlift 
 
-    log_workout "$(date +"%d-%m-%Y")" B $squat $overhead_press $deadlift
+    echo "$date, B, $squat, -, $overhead_press, -, $deadlift" >> workout.csv
     echo "Logged Workout B on $(date)"
 }
+
+create_file() {
+    echo "workout.csv not found"
+    echo "Creating a new file ..."
+    echo "Date, Workout, Squat Weight (in Kg), Bench Press (in Kg), Overhead Press (in Kg), Barbell Rows (in Kg), Deadlift (in Kg)" > workout.csv
+}
+
+[ -e workout.csv ] || create_file
 
 case "$1" in 
     a|A) workout_a ;;
